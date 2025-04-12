@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "7270:7270"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/.env  # Защищаем от перезаписи при монтировании
+    restart: unless-stopped
